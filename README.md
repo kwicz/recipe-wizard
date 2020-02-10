@@ -1,4 +1,4 @@
-# _Webpack Boilerplate_
+# _Testing firebase with webpack_
 
 #### _This site comes with the all basic parts to get you started making a single page website with webpack fast. | Feb 5th. 2020_
 
