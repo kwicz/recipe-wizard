@@ -2,13 +2,13 @@
 
 export const FireConfig = function(firebase) {
   this.conf = firebase.initializeApp({
-    apiKey: "AIzaSyCgRI_bMEQQcVgz_heSs724BI_3qMtlX7o",
-    authDomain: "golden-girls-battle-sim.firebaseapp.com",
-    databaseURL: "https://golden-girls-battle-sim.firebaseio.com",
-    projectId: "golden-girls-battle-sim",
-    storageBucket: "golden-girls-battle-sim.appspot.com",
-    messagingSenderId: "786687293646",
-    appId: "1:786687293646:web:3b72244d78afe89153789f",
-    measurementId: "G-CQW69QD0LX"
+    apiKey: "AIzaSyDsGOuBHKULTwV32BSxcPH6B1cqd9oUhug",
+    authDomain: "recipe-wizards.firebaseapp.com",
+    databaseURL: "https://recipe-wizards.firebaseio.com",
+    projectId: "recipe-wizards",
+    storageBucket: "recipe-wizards.appspot.com",
+    messagingSenderId: "371538083718",
+    appId: "1:371538083718:web:3f6f16ff998e2d43e97607",
+    measurementId: "G-MZ9VBYSXP1"
   });
 };

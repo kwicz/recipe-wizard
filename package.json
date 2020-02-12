@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --mode development",
     "start": "npm run build & webpack-dev-server --open --mode development",
+    "now": "webpack --watch --info-verbosity verbose",
     "lint": "eslint src/*.js",
     "test": "jest",
     "debug": "node --inspect node_modules/.bin/jest --runInBand"

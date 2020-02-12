@@ -7,4 +7,26 @@
   
   .output {
     margin-top: 55px;
+    color: $color-primary;
+  }
+
+  .week {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  .week-day {
+    background: white;
+    border: 2px solid green;
+    margin: 1px; 
+    height: 200px;
+    width: 14%;
+    padding: 5px;
+
+    &--title {
+      font-weight: 700;
+    }
+
+    
   }

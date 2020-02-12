@@ -8,23 +8,97 @@
   <!-- firbase ui  -->
 
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-  <title>Webpack</title>
+
+  <title>Recipe Wizard</title>
 </head>
 
 <body>
-  <div class="container">
-    <!-- input form  -->
-    <div class="row">
-      <div class="col-md-6 offset-md-3 box-decore">
-        <h1 class="text-center">Webpack Boilerplate</h1>
-        <div id="firebaseui-auth-container"></div>
-        <div id="loader">Loading...</div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Recipe Wizard</a>
+    <div class="navbar" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+
+    <div class="form-group row">
+      <div class="col-md-6">
+
+        <h2> Recipes for week of </h2>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+        </div>
       </div>
     </div>
+    <!-- WEEK  -->
+    <div class="row week">
+      <div class="sun week-day">
+        <div class="week-day--title">Sunday</div>
+      </div>
+      <div class="mon week-day">
+        <div class="week-day--title">Monday</div>
+      </div>
+      <div class="tue week-day">
+        <div class="week-day--title">Tuesday</div>
+      </div>
+      <div class="wed week-day">
+        <div class="week-day--title">Wednesday</div>
+      </div>
+      <div class="thur week-day">
+        <div class="week-day--title">Thursday</div>
+      </div>
+      <div class="fri week-day">
+        <div class="week-day--title">Friday</div>
+      </div>
+      <div class="sat week-day">
+        <div class="week-day--title">Saturday</div>
+      </div>
+    </div> <!-- end Week -->
+
+    <div class="grocery-list text-center">
+      <button class="btn btn-success btn-lg">Get Grocery List</button>
+    </div>
+
+    <div class="row search">
+      <div class="search--box col-md-6 offset-3 text-center">
+        <form>
+          <div class="input-group ">
+              <input id="search-query" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+              </div>
+            </div>
+        </form>
+      </div>
+      <div class="search--results col-md-6 offset-3 text-center">
+        search results
+      </div>
+    </div> <!-- end search -->
+
+
+
+
 
     <!-- output box  -->
     <div class="row">
       <div class="col-md-6 offset-md-3">
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">--</div>
         <div class="output">Output here</div>
       </div>
     </div>

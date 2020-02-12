@@ -1,0 +1,25 @@
+[debug] [2020-02-12T17:58:17.294Z] ----------------------------------------------------------------------
+[debug] [2020-02-12T17:58:17.296Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2020-02-12T17:58:17.296Z] CLI Version:   7.1.0
+[debug] [2020-02-12T17:58:17.296Z] Platform:      darwin
+[debug] [2020-02-12T17:58:17.296Z] Node Version:  v8.12.0
+[debug] [2020-02-12T17:58:17.297Z] Time:          Wed Feb 12 2020 09:58:17 GMT-0800 (PST)
+[debug] [2020-02-12T17:58:17.297Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2020-02-12T17:58:17.305Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-02-12T17:58:17.305Z] > authorizing via signed-in user
+[debug] [2020-02-12T17:58:17.305Z] [iam] checking project golden-girls-battle-sim for permissions ["firebase.projects.get"]
+[debug] [2020-02-12T17:58:17.306Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/golden-girls-battle-sim:testIamPermissions  
+
+[debug] [2020-02-12T17:58:17.449Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-12T17:58:17.450Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/golden-girls-battle-sim  
+ 
+[debug] [2020-02-12T17:58:17.593Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/Guest/Desktop/Recipe-Wizards-firebase'...
+[info] 
+[debug] [2020-02-12T17:58:17.595Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/golden-girls-battle-sim/webApps/-/config  
+ 
+[debug] [2020-02-12T17:58:17.889Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: dist
+[info] ✔  hosting: Local server: http://localhost:5000
