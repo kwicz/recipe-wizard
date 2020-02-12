@@ -117,6 +117,11 @@ $(document).ready(function () {
     db.collection("cookie").add(searchObj[this.value])
     console.log(this.name, this.value);
   });
+
+
+  $('#get-date').change(function(){
+    console.log(this.value)
+  });
 });
 
 
