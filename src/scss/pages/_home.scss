@@ -30,3 +30,27 @@
 
     
   }
+
+  .meal-card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 5px;
+    padding: 5px;
+
+    h3 {
+      font-size: 20px;
+      height: 20%;
+    }
+    .img-box {
+      overflow: hidden;
+      height: 80%;
+      width: 90%;
+      text-align: center;
+      // margin: 5px;
+
+    }
+    img {
+      max-height: 80%
+    }
+  }
