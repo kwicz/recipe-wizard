@@ -1,29 +1,29 @@
-[debug] [2020-02-13T02:41:04.316Z] ----------------------------------------------------------------------
-[debug] [2020-02-13T02:41:04.317Z] Command:       /usr/local/bin/firebase /Users/dusty/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve
-[debug] [2020-02-13T02:41:04.318Z] CLI Version:   7.11.0
-[debug] [2020-02-13T02:41:04.318Z] Platform:      darwin
-[debug] [2020-02-13T02:41:04.318Z] Node Version:  v10.17.0
-[debug] [2020-02-13T02:41:04.320Z] Time:          Wed Feb 12 2020 18:41:04 GMT-0800 (Pacific Standard Time)
-[debug] [2020-02-13T02:41:04.320Z] ----------------------------------------------------------------------
-[debug] [2020-02-13T02:41:04.320Z] 
-[debug] [2020-02-13T02:41:04.333Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-02-13T02:41:04.333Z] > authorizing via signed-in user
-[debug] [2020-02-13T02:41:04.333Z] [iam] checking project golden-girls-battle-sim for permissions ["firebase.projects.get"]
-[debug] [2020-02-13T02:41:04.335Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2020-02-13T02:41:04.335Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+[debug] [2020-02-13T04:50:08.641Z] ----------------------------------------------------------------------
+[debug] [2020-02-13T04:50:08.642Z] Command:       /usr/local/bin/firebase /Users/dusty/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve
+[debug] [2020-02-13T04:50:08.643Z] CLI Version:   7.11.0
+[debug] [2020-02-13T04:50:08.643Z] Platform:      darwin
+[debug] [2020-02-13T04:50:08.643Z] Node Version:  v10.17.0
+[debug] [2020-02-13T04:50:08.643Z] Time:          Wed Feb 12 2020 20:50:08 GMT-0800 (Pacific Standard Time)
+[debug] [2020-02-13T04:50:08.643Z] ----------------------------------------------------------------------
+[debug] [2020-02-13T04:50:08.644Z] 
+[debug] [2020-02-13T04:50:08.662Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-02-13T04:50:08.663Z] > authorizing via signed-in user
+[debug] [2020-02-13T04:50:08.663Z] [iam] checking project golden-girls-battle-sim for permissions ["firebase.projects.get"]
+[debug] [2020-02-13T04:50:08.664Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-02-13T04:50:08.665Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  <request body omitted>
-[debug] [2020-02-13T02:41:04.747Z] <<< HTTP RESPONSE 200
-[debug] [2020-02-13T02:41:04.768Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/golden-girls-battle-sim:testIamPermissions  
+[debug] [2020-02-13T04:50:08.848Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-13T04:50:08.860Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/golden-girls-battle-sim:testIamPermissions  
 
-[debug] [2020-02-13T02:41:05.045Z] <<< HTTP RESPONSE 200
-[debug] [2020-02-13T02:41:05.046Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/golden-girls-battle-sim  
+[debug] [2020-02-13T04:50:09.072Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-13T04:50:09.073Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/golden-girls-battle-sim  
  
-[debug] [2020-02-13T02:41:05.638Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-13T04:50:09.577Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/dusty/Dropbox/Code/epicodus/recipe-wizard'...
 [info] 
-[debug] [2020-02-13T02:41:05.641Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/golden-girls-battle-sim/webApps/-/config  
+[debug] [2020-02-13T04:50:09.579Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/golden-girls-battle-sim/webApps/-/config  
  
-[debug] [2020-02-13T02:41:06.362Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-13T04:50:10.292Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: dist
 [info] ✔  hosting: Local server: http://localhost:5000

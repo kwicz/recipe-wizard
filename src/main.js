@@ -3,7 +3,8 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import * as firebaseui from "firebaseui";
-// import FirebaseConfig from "./config/firebaseConfig";
+import { Print } from "./print";
+import { Week } from "./week";
 
 //styles
 import "./scss/main.scss";
@@ -31,11 +32,14 @@ if (!firebase.apps.length) {
 
 // the Database
 let db = firebase.firestore();
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
+let ui = new firebaseui.auth.AuthUI(firebase.auth());
+let print = new Print();
 
 // ON LOAD
 $(document).ready(function() {
   let userID;
+
+  //Login condition
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       userID = firebase.auth().currentUser.uid;
@@ -59,8 +63,7 @@ $(document).ready(function() {
     }
   });
 
-  let searchObj = {};
-
+  //Submit and print meal query
   $("form").submit(function(event) {
     event.preventDefault();
     const query = $("#search-query").val();
@@ -69,58 +72,17 @@ $(document).ready(function() {
     (async () => {
       let mealService = new MealsService(query);
       const response = await mealService.getMealByQuery();
-      makeElements(response);
+      print.makeElements(response);
+      $(".search--results").html(print.printMealsQuery());
     })();
-
-    function makeElements(response) {
-      let printObj = [];
-      console.log(response);
-      response.hits.forEach(function(hit) {
-        const { label, image, source, url, ingredientLines } = hit.recipe;
-        const tempObj = {
-          label,
-          image,
-          source,
-          url,
-          ingredientLines
-        };
-        printObj.push(tempObj);
-      });
-      console.log(printObj);
-      searchObj = printObj;
-      printReturn(printObj);
-    }
   });
-
-  function printReturn(arr) {
-    let printTo = $(".search--results");
-    let printString = "";
-
-    arr.forEach(function(item, index) {
-      printString += `<div class="col-md-3 meal-card card"><a href= "${item.url}" target="_blank">
-      <h3>${item.label}</h3><div class="img-box">
-      <img src="${item.image}"></div></a>
-        <div class="day-btns">
-          <button class="btn btn-success btn-sm" name="sunday" value="${index}">S</button>
-          <button class="btn btn-success btn-sm" name="monday" value="${index}">M</button>
-          <button class="btn btn-success btn-sm" name="tuesday" value="${index}">T</button>
-          <button class="btn btn-success btn-sm" name="wednesday" value="${index}">W</button>
-          <button class="btn btn-success btn-sm" name="thursday" value="${index}">R</button>
-          <button class="btn btn-success btn-sm" name="friday" value="${index}">F</button>
-          <button class="btn btn-success btn-sm" name="saturday" value="${index}">S</button>
-        </div>
-      </div>`;
-    });
-    printTo.html(printString);
-  }
 
   //on click push to database
   $(".search--results").on("click", "button", function() {
     let userDate = $("#get-date").val();
-    db.collection("weeks").doc(userDate).collection(this.name).add(searchObj[this.value]);
-    // console.log(this.name, this.value);
+    db.collection("week-days").doc(this.name).collection("meals").add(print.arr[this.value]);
 
-    db.collection("weeks").doc(userDate).collection(this.name).get().then((snapshot) => {
+    db.collection("week-days").doc(this.name).collection("meals").get().then((snapshot) => {
       const values = snapshot.docs.map(function(doc) {
         return { id: doc.id, ...doc.data };
       });
@@ -131,4 +93,13 @@ $(document).ready(function() {
   $("#get-date").change(function() {
     console.log(this.value);
   });
+
+  (() => {
+    db.collection("week-days").doc("sunday").collection("meals").onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(doc.data());
+        $("#sun").append(doc.data().label);
+      });
+    });
+  })();
 });
