@@ -94,12 +94,69 @@ $(document).ready(function() {
     console.log(this.value);
   });
 
+  // ------------- print week days ------------------ \\
   (() => {
     db.collection("week-days").doc("sunday").collection("meals").onSnapshot((querySnapshot) => {
+      let printString = "";
       querySnapshot.forEach((doc) => {
-        console.log(doc.data());
-        $("#sun").append(doc.data().label);
+        printString += `<p>${doc.data().label}</p>`;
       });
+      $("#sunday").html(printString);
+    });
+  })();
+
+  (() => {
+    db.collection("week-days").doc("monday").collection("meals").onSnapshot((querySnapshot) => {
+      let printString = "";
+      querySnapshot.forEach((doc) => {
+        printString += `<p>${doc.data().label}</p>`;
+      });
+      $("#monday").html(printString);
+    });
+  })();
+  (() => {
+    db.collection("week-days").doc("tuesday").collection("meals").onSnapshot((querySnapshot) => {
+      let printString = "";
+      querySnapshot.forEach((doc) => {
+        printString += `<p>${doc.data().label}</p>`;
+      });
+      $("#tuesday").html(printString);
+    });
+  })();
+  (() => {
+    db.collection("week-days").doc("wednesday").collection("meals").onSnapshot((querySnapshot) => {
+      let printString = "";
+      querySnapshot.forEach((doc) => {
+        printString += `<p>${doc.data().label}</p>`;
+      });
+      $("#wednesday").html(printString);
+    });
+  })();
+  (() => {
+    db.collection("week-days").doc("thursday").collection("meals").onSnapshot((querySnapshot) => {
+      let printString = "";
+      querySnapshot.forEach((doc) => {
+        printString += `<p>${doc.data().label}</p>`;
+      });
+      $("#thursday").html(printString);
+    });
+  })();
+  (() => {
+    db.collection("week-days").doc("friday").collection("meals").onSnapshot((querySnapshot) => {
+      let printString = "";
+      querySnapshot.forEach((doc) => {
+        printString += `<p>${doc.data().label}</p>`;
+      });
+      $("#friday").html(printString);
+    });
+  })();
+  (() => {
+    db.collection("week-days").doc("saturday").collection("meals").onSnapshot((querySnapshot) => {
+      let printString = "";
+      querySnapshot.forEach((doc) => {
+        printString += `<p>${doc.data().label}</p>`;
+      });
+      $("#saturday").html(printString);
     });
   })();
 });
