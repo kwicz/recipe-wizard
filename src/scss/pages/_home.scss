@@ -1,4 +1,4 @@
-  
+
 .box-decore {
     margin-top: 55px;
     padding: 25px;    
@@ -11,46 +11,88 @@
   }
 
   .week {
+    background-color: rgba(144, 238, 144, 0.53);
+    border-radius: .5rem;
+    margin: 10px;
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
   }
 
+  .card-week {
+    background-color: lightgreen;
+  }
   .week-day {
     background: white;
-    border: 2px solid green;
-    margin: 1px; 
+    border-radius: .5rem; 
+    margin: 20px 5px;
     height: 200px;
     width: 14%;
-    padding: 5px;
+    overflow: hidden;
+
 
     &--title {
+      background: rgb(210, 210, 210);
       font-weight: 700;
+      font-family: playfair;
+      border-bottom: 1px dashed rgb(147, 147, 147);
+      text-align: center;
     }
 
-    
+    &--content{
+      padding: 5px;
+      overflow: scroll;
+      height: 100%;
+    }
+ 
   }
 
+  .grocery-list {
+    margin: 10px;
+  }
+
+  .search--results {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+  }
+  
   .meal-card {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 5px;
+    justify-content: space-evenly;
+    margin: 5px;
     padding: 5px;
+    width: 23%;
+    height: 380;
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+    overflow: hidden; 
+    @include respond(tab-land) {
+      width: 90%;
+    }
 
+    
     h3 {
       font-size: 20px;
       height: 20%;
+      text-align: center;
     }
     .img-box {
-      overflow: hidden;
-      height: 80%;
-      width: 90%;
       text-align: center;
-      // margin: 5px;
-
+      overflow: hidden;
+      height: 50%;
+      width: 80%;
+      text-align: center;
+      margin: 5px auto;
+      flex-shrink: 1;
     }
+    
     img {
-      max-height: 80%
+      margin: auto;
     }
   }
