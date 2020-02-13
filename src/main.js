@@ -4,7 +4,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import * as firebaseui from "firebaseui";
 import { Print } from "./print";
-import { Week } from "./week";
+
 
 //styles
 import "./scss/main.scss";
