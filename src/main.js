@@ -63,6 +63,19 @@ $(document).ready(function() {
     }
   });
 
+  $("#signout").click(function() {
+    firebase.auth().signOut().then(
+      function() {
+        $(".login").show();
+        $(".site").hide();
+        console.log("Signed Out");
+      },
+      function(error) {
+        console.error("Sign Out Error", error);
+      }
+    );
+  });
+
   //Submit and print meal query
   $("form").submit(function(event) {
     event.preventDefault();
