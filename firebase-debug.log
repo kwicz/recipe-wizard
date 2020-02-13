@@ -1,25 +1,29 @@
-[debug] [2020-02-12T21:10:08.580Z] ----------------------------------------------------------------------
-[debug] [2020-02-12T21:10:08.582Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
-[debug] [2020-02-12T21:10:08.582Z] CLI Version:   7.1.0
-[debug] [2020-02-12T21:10:08.582Z] Platform:      darwin
-[debug] [2020-02-12T21:10:08.582Z] Node Version:  v8.12.0
-[debug] [2020-02-12T21:10:08.583Z] Time:          Wed Feb 12 2020 13:10:08 GMT-0800 (PST)
-[debug] [2020-02-12T21:10:08.583Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2020-02-12T21:10:08.608Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-02-12T21:10:08.608Z] > authorizing via signed-in user
-[debug] [2020-02-12T21:10:08.608Z] [iam] checking project golden-girls-battle-sim for permissions ["firebase.projects.get"]
-[debug] [2020-02-12T21:10:08.610Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/golden-girls-battle-sim:testIamPermissions  
+[debug] [2020-02-13T02:41:04.316Z] ----------------------------------------------------------------------
+[debug] [2020-02-13T02:41:04.317Z] Command:       /usr/local/bin/firebase /Users/dusty/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve
+[debug] [2020-02-13T02:41:04.318Z] CLI Version:   7.11.0
+[debug] [2020-02-13T02:41:04.318Z] Platform:      darwin
+[debug] [2020-02-13T02:41:04.318Z] Node Version:  v10.17.0
+[debug] [2020-02-13T02:41:04.320Z] Time:          Wed Feb 12 2020 18:41:04 GMT-0800 (Pacific Standard Time)
+[debug] [2020-02-13T02:41:04.320Z] ----------------------------------------------------------------------
+[debug] [2020-02-13T02:41:04.320Z] 
+[debug] [2020-02-13T02:41:04.333Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-02-13T02:41:04.333Z] > authorizing via signed-in user
+[debug] [2020-02-13T02:41:04.333Z] [iam] checking project golden-girls-battle-sim for permissions ["firebase.projects.get"]
+[debug] [2020-02-13T02:41:04.335Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-02-13T02:41:04.335Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-02-13T02:41:04.747Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-13T02:41:04.768Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/golden-girls-battle-sim:testIamPermissions  
 
-[debug] [2020-02-12T21:10:08.720Z] <<< HTTP RESPONSE 200
-[debug] [2020-02-12T21:10:08.721Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/golden-girls-battle-sim  
+[debug] [2020-02-13T02:41:05.045Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-13T02:41:05.046Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/golden-girls-battle-sim  
  
-[debug] [2020-02-12T21:10:08.840Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-13T02:41:05.638Z] <<< HTTP RESPONSE 200
 [info] 
-[info] === Serving from '/Users/Guest/Desktop/Recipe-Wizards-firebase'...
+[info] === Serving from '/Users/dusty/Dropbox/Code/epicodus/recipe-wizard'...
 [info] 
-[debug] [2020-02-12T21:10:08.842Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/golden-girls-battle-sim/webApps/-/config  
+[debug] [2020-02-13T02:41:05.641Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/golden-girls-battle-sim/webApps/-/config  
  
-[debug] [2020-02-12T21:10:09.170Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-13T02:41:06.362Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: dist
 [info] ✔  hosting: Local server: http://localhost:5000

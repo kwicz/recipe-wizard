@@ -1,15 +1,14 @@
-
-// Firebase App (the core Firebase SDK) is always required and must be listed first
-import firebase from "firebase/app";
-import "firebase/analytics";
+// Import firebase modules.
+import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-import { firebaseui } from "firebaseui";
+import * as firebaseui from "firebaseui";
+// import FirebaseConfig from "./config/firebaseConfig";
 
 //styles
 import "./scss/main.scss";
-import 'bootstrap/js/dist/util';
-import 'bootstrap/js/dist/dropdown';
+import "bootstrap/js/dist/util";
+import "bootstrap/js/dist/dropdown";
 import $ from "jquery";
 
 import { MealsService } from "./meals-service";
@@ -27,41 +26,45 @@ const firebaseConfig = firebase.initializeApp({
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
+  // Initialize the FirebaseUI Widget using Firebase.
 }
 
 // the Database
 let db = firebase.firestore();
-
-function addWeek() {
-  db.collection("weeks").add({
-    test: 'cats',
-    other: 'dogs'
-  })
-    .then(function (docRef) {
-      console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function (error) {
-      console.error("Error adding document: ", error);
-    });
-}
-
-function sendToLink() {
-  console.log('logging')
-}
-
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 // ON LOAD
-$(document).ready(function () {
-  let searchObj = {};
-
-  $('.addWeek').click(function () {
-    addWeek();
+$(document).ready(function() {
+  let userID;
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      userID = firebase.auth().currentUser.uid;
+      $(".login").hide();
+      $(".site").show();
+      console.log(userID);
+    } else {
+      $(".site").hide();
+      ui.start("#firebaseui-auth-container", {
+        signInSuccessUrl: "#",
+        signInOptions: [
+          // List of OAuth providers supported.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.GithubAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: "#",
+        // Privacy policy url.
+        privacyPolicyUrl: "#"
+      });
+    }
   });
 
-  $('form').submit(function (event) {
+  let searchObj = {};
+
+  $("form").submit(function(event) {
     event.preventDefault();
-    const query = $('#search-query').val();
-    $('#search-query').val("");
+    const query = $("#search-query").val();
+    $("#search-query").val("");
 
     (async () => {
       let mealService = new MealsService(query);
@@ -72,7 +75,7 @@ $(document).ready(function () {
     function makeElements(response) {
       let printObj = [];
       console.log(response);
-      response.hits.forEach(function (hit) {
+      response.hits.forEach(function(hit) {
         const { label, image, source, url, ingredientLines } = hit.recipe;
         const tempObj = {
           label,
@@ -80,7 +83,7 @@ $(document).ready(function () {
           source,
           url,
           ingredientLines
-        }
+        };
         printObj.push(tempObj);
       });
       console.log(printObj);
@@ -89,11 +92,10 @@ $(document).ready(function () {
     }
   });
 
-
-  function printReturn(arr){
-    let printTo = $('.search--results');
+  function printReturn(arr) {
+    let printTo = $(".search--results");
     let printString = "";
-  
+
     arr.forEach(function(item, index) {
       printString += `<div class="col-md-3 meal-card card"><a href= "${item.url}" target="_blank">
       <h3>${item.label}</h3><div class="img-box">
@@ -113,15 +115,20 @@ $(document).ready(function () {
   }
 
   //on click push to database
-  $('.search--results').on('click', 'button', function(){
-    db.collection("cookie").add(searchObj[this.value])
-    console.log(this.name, this.value);
+  $(".search--results").on("click", "button", function() {
+    let userDate = $("#get-date").val();
+    db.collection("weeks").doc(userDate).collection(this.name).add(searchObj[this.value]);
+    // console.log(this.name, this.value);
+
+    db.collection("weeks").doc(userDate).collection(this.name).get().then((snapshot) => {
+      const values = snapshot.docs.map(function(doc) {
+        return { id: doc.id, ...doc.data };
+      });
+      console.table(values);
+    });
   });
 
-
-  $('#get-date').change(function(){
-    console.log(this.value)
+  $("#get-date").change(function() {
+    console.log(this.value);
   });
 });
-
-
