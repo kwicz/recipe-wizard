@@ -36,11 +36,11 @@ let ui = new firebaseui.auth.AuthUI(firebase.auth());
 let print = new Print();
 
 // ON LOAD
-$(document).ready(function() {
+$(document).ready(function () {
   let userID;
 
   //Login condition
-  firebase.auth().onAuthStateChanged(function(user) {
+  firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       userID = firebase.auth().currentUser.uid;
       $(".login").hide();
@@ -63,21 +63,21 @@ $(document).ready(function() {
     }
   });
 
-  $("#signout").click(function() {
+  $("#signout").click(function () {
     firebase.auth().signOut().then(
-      function() {
+      function () {
         $(".login").show();
         $(".site").hide();
         console.log("Signed Out");
       },
-      function(error) {
+      function (error) {
         console.error("Sign Out Error", error);
       }
     );
   });
 
   //Submit and print meal query
-  $("form").submit(function(event) {
+  $("form").submit(function (event) {
     event.preventDefault();
     const query = $("#search-query").val();
     $("#search-query").val("");
@@ -96,85 +96,42 @@ $(document).ready(function() {
   });
 
   //on click push to database
-  $(".search--results").on("click", "button", function() {
+  $(".search--results").on("click", "button", function () {
     let userDate = $("#get-date").val();
     db.collection("week-days").doc(this.name).collection("meals").add(print.arr[this.value]);
 
     db.collection("week-days").doc(this.name).collection("meals").get().then((snapshot) => {
-      const values = snapshot.docs.map(function(doc) {
+      const values = snapshot.docs.map(function (doc) {
         return { id: doc.id, ...doc.data };
       });
-      console.table(values);
     });
   });
 
-  $("#get-date").change(function() {
+  $("#get-date").change(function () {
     console.log(this.value);
+  });
+  
+  $('.week-day--content').on('click', 'p', function (event) {
+    let values = this.id.split(',');
+      db.collection("week-days").doc(values[1]).collection("meals").doc(values[0]).delete().catch(function (error) {
+        console.error("Error removing document: ", error);
+      });
+
   });
 
   // ------------- print week days ------------------ \\
-  (() => {
-    db.collection("week-days").doc("sunday").collection("meals").onSnapshot((querySnapshot) => {
-      let printString = "";
-      querySnapshot.forEach((doc) => {
-        printString += `<p>${doc.data().label}</p>`;
-      });
-      $("#sunday").html(printString);
-    });
-  })();
+  let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
-  (() => {
-    db.collection("week-days").doc("monday").collection("meals").onSnapshot((querySnapshot) => {
+  for (let i = 0; i < days.length; i++) {
+
+    db.collection("week-days").doc(days[i]).collection("meals").onSnapshot((querySnapshot) => {
       let printString = "";
       querySnapshot.forEach((doc) => {
-        printString += `<p>${doc.data().label}</p>`;
+        printString += `<p id="${doc.id},${days[i]}" >${doc.data().label}</p>`;
       });
-      $("#monday").html(printString);
+      $("#" + days[i]).html(printString);
     });
-  })();
-  (() => {
-    db.collection("week-days").doc("tuesday").collection("meals").onSnapshot((querySnapshot) => {
-      let printString = "";
-      querySnapshot.forEach((doc) => {
-        printString += `<p>${doc.data().label}</p>`;
-      });
-      $("#tuesday").html(printString);
-    });
-  })();
-  (() => {
-    db.collection("week-days").doc("wednesday").collection("meals").onSnapshot((querySnapshot) => {
-      let printString = "";
-      querySnapshot.forEach((doc) => {
-        printString += `<p>${doc.data().label}</p>`;
-      });
-      $("#wednesday").html(printString);
-    });
-  })();
-  (() => {
-    db.collection("week-days").doc("thursday").collection("meals").onSnapshot((querySnapshot) => {
-      let printString = "";
-      querySnapshot.forEach((doc) => {
-        printString += `<p>${doc.data().label}</p>`;
-      });
-      $("#thursday").html(printString);
-    });
-  })();
-  (() => {
-    db.collection("week-days").doc("friday").collection("meals").onSnapshot((querySnapshot) => {
-      let printString = "";
-      querySnapshot.forEach((doc) => {
-        printString += `<p>${doc.data().label}</p>`;
-      });
-      $("#friday").html(printString);
-    });
-  })();
-  (() => {
-    db.collection("week-days").doc("saturday").collection("meals").onSnapshot((querySnapshot) => {
-      let printString = "";
-      querySnapshot.forEach((doc) => {
-        printString += `<p>${doc.data().label}</p>`;
-      });
-      $("#saturday").html(printString);
-    });
-  })();
-});
+
+  }
+
+});//end document ready

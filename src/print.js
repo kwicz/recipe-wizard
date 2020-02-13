@@ -28,13 +28,13 @@ export class Print {
   makeElements(response) {
     let printObj = [];
     response.hits.forEach(function(hit) {
-      const { label, image, source, url, ingredientLines } = hit.recipe;
+      const { label, image, source, url, ingredients } = hit.recipe;
       const tempObj = {
         label,
         image,
         source,
         url,
-        ingredientLines
+        ingredients
       };
       printObj.push(tempObj);
     });
