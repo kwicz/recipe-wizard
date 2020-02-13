@@ -85,8 +85,13 @@ $(document).ready(function() {
     (async () => {
       let mealService = new MealsService(query);
       const response = await mealService.getMealByQuery();
-      print.makeElements(response);
-      $(".search--results").html(print.printMealsQuery());
+      console.log(response);
+      if (response.hits.length > 0) {
+        print.makeElements(response);
+        $(".search--results").html(print.printMealsQuery());
+      } else {
+        $(".search--results").html("Sorry, no results.  Please search for something else.")
+      }
     })();
   });
 
