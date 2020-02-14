@@ -19,6 +19,7 @@ export class MealsService {
       // The getElements method is UI logic so it will need to be separated from the business logic.
       return jsonifiedResponse;
     } catch (error) {
+      console.error(error);
       return false;
     }
   }

@@ -1,24 +1,20 @@
-# _Testing firebase with webpack_
+# _Recipe Wizard_
 
 #### _This site comes with the all basic parts to get you started making a single page website with webpack fast. | Feb 5th. 2020_
 
-#### By _** Dusty McCord**_
-[link to demo site coming](https://dustatron.github.io/webpack-boilerplate/)
+#### By _**K. Wicz & Dusty McCord**_
+[link to demo site coming](#)
 
 ## Description
 
-There is a pre-built two input form with a submit button. There is also a simple jQuery function that will console.log when the submit button is clicked.
-
-The .gitignore file is a template for mac osx but a link is provided to get a template for any operating system. 
-
-[create a .gitignore template for your os here](https://www.gitignore.io/)
+This app is designed let users search for recipes and add those recipes to their weekly meal calendar.  Once the user has built their recipe calendar for the week, they are able to print a grocery list of everything they need for their weekly trip to the grocery store!
 
 ## Setup/Installation Requirements
 
 _Make sure you have [git version control](https://git-scm.com/downloads) installed on your computer._
 
-1. find the green 'Clone or Download' button and copy the link
-2. open terminal and type...
+1. Find the green 'Clone or Download' button and copy the link
+2. Open terminal and type...
 
 **Windows**
 ```sh 
@@ -30,46 +26,61 @@ cd desktop
  cd ~/Desktop
  ```
 
- 3. in terminal type '_git clone {link to repository}_ '
+ 3. In terminal, clone the project by typing:
 
 ```sh
-git clone Link-Here
+git clone https://github.com/dustatron/recipe-wizard.git
 ```
 
-4. navigate to the new folder that was created on your desk
+4. Navigate to the new folder that was created on your desk:
 ```sh
-cd folder name
+cd recipe-wizard
 ```
 
-5. run npm install
+5. In terminal, type:
 ```sh
 npm install
 ```
-6. run development server
+6. Navigate to [Google Firebase](https://firebase.google.com/docs/web/setup?authuser=0).  Create new credentials for your project.
+
+7. In terminal, use firebase command line to login with your Google account credentials by typing 
 ```sh
-npm run start
+firebase login
 ```
 
-7. edit files in '/src' to make changes to the project.
+8. Create a new Recipe Search API key and ID at [Edamam](https://developer.edamam.com/edamam-recipe-api).
 
-8. remove .git delete this projects commit history
+9. In the root directory of your cloned folder, type 
 ```sh
-rm -rf .git
-```
-9. start your new git repository 
-```sh
-git init
+touch .env
 ```
 
+10. In your text editor, open the .env file and add
+```sh
+API_KEY = {your key here}
+API_ID = {your ID here}
+```
+11. In the command line, start program with
+```sh
+npm run now
+```
+12. In the command line, start the server by running
+```sh
+firebase serve
+```
+13. Navigate to http://localhost:5000/ in your browser to see the project.
 
 
 ## Specs
 ### Behavior Driven Development Spec List
 
-Behavoir | Input | Output
+Behavior | Input | Output
 :---------|:------:|:------:
-|1 - The program will take in a simple input and return the input | 'hello' | 'hello' |
-
+|User will enter ingredient item in search input|chicken|links to 12 chicken recipes|
+|User will select which day they want to make a recipe|Click Monday button|Recipe is added to Monday on the meal calendar|
+|User will deselct meal from meal calendar|Click meal title on calendar|Recipe is removed|
+|User selects start date of meal calendar|11/22/63|Meal calendar is labeled for the week of 11/22/63|
+|User selects Grocery List|Click Grocery List|List of groceries for all recipes selected|
 
 ## Support 
 
@@ -118,5 +129,5 @@ _The software is provided as is. It might work as expected - or not. Use at your
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-Copyright (c) 2020 **_Dusty McCord_**
+Copyright (c) 2020 **_Dusty McCord & K. Wicz_**
 

@@ -110,12 +110,12 @@ $(document).ready(function () {
   $("#get-date").change(function () {
     console.log(this.value);
   });
-  
+
   $('.week-day--content').on('click', 'p', function (event) {
     let values = this.id.split(',');
-      db.collection("week-days").doc(values[1]).collection("meals").doc(values[0]).delete().catch(function (error) {
-        console.error("Error removing document: ", error);
-      });
+    db.collection("week-days").doc(values[1]).collection("meals").doc(values[0]).delete().catch(function (error) {
+      console.error("Error removing document: ", error);
+    });
 
   });
 
@@ -123,7 +123,6 @@ $(document).ready(function () {
   let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
   for (let i = 0; i < days.length; i++) {
-
     db.collection("week-days").doc(days[i]).collection("meals").onSnapshot((querySnapshot) => {
       let printString = "";
       querySnapshot.forEach((doc) => {
@@ -131,7 +130,35 @@ $(document).ready(function () {
       });
       $("#" + days[i]).html(printString);
     });
-
   }
+
+  // ------------ Grocery List -------------------- \\
+  $('#grocery-btn').click(function () {
+    let groceryList = "";
+   days.forEach(function (day) {
+        db.collection("week-days").doc(day).collection("meals").get().then(function (meals) {
+          meals.forEach(function (meal) {
+            // groceryList.push(meal.data().ingredientLines);
+            for (let item in meal.data().ingredientLines) {
+              // groceryList.push(meal.data().ingredientLines[item]);
+              $(".grocery-list").append(`<li><div class="form-check">
+                <input id="${meal.data().ingredientLines[item]}" class="form-check-input" type="checkbox" value="">
+                <label for="${meal.data().ingredientLines[item]}" class="form-check-label">
+                ${meal.data().ingredientLines[item]}</label>
+              </div><li>`);
+              // groceryList += meal.data().ingredientLines[item];
+            }
+          });
+        });
+      });
+      // $(".search--results").append(groceryList);
+
+
+    // groceryList.forEach((item)=>{
+
+    // });
+    // console.log(groceryList);
+    console.log(days);
+  });
 
 });//end document ready
